@@ -7,8 +7,8 @@ public class Movement : MonoBehaviour
 
     public Rigidbody rb; //reference to the rigidbody component called 'rb'
     public float jumpForce = 5000f;
-    public float forwardForce = 2000f;
-    public float sidewaysForce = 500f;
+    public float forwardForce = 500f;
+    public float sidewaysForce = 10f;
     public float canJump = 0f;
 
     private void FixedUpdate()
@@ -17,12 +17,12 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKey("d"))
         {
-            rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0);
+            rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
 
         if (Input.GetKey("a"))
         {
-            rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0);
+            rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
        
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > canJump)
